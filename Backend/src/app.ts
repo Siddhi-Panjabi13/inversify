@@ -5,6 +5,8 @@ import cors from 'cors';
 import { port } from "./config/app.config";
 import {InversifyExpressServer} from 'inversify-express-utils';
 import container from './config/inversify.config'
+import { ErrorHandler } from './handlers/errorHandler';
+import { ErrorHandlerMiddleware } from './handlers/errorResponse';
 const server=new InversifyExpressServer(container)
 
 const allowedOrigins = ['http://localhost:4200']
@@ -21,7 +23,9 @@ server.setConfig(app => {
     app.use(express.json())
     app.use(cors(corsOptions))
   })
-
+  server.setErrorConfig(app=>{
+    app.use(ErrorHandlerMiddleware(container))
+  })
 const app=server.build()
 
 connectDb().then(() => {
