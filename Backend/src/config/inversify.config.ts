@@ -2,10 +2,10 @@ import { Container } from 'inversify';
 import { TYPES } from '../utils/type';
 import { UserService } from '../services';
 import { UserController } from '../controllers';
-import { ErrorHandler } from '../handlers/errorHandler';
+import { ErrorHandlerClass } from '../handlers/errorResponse';
 
 const container = new Container()
-container.bind<ErrorHandler>(TYPES.ErrorHandler).to(ErrorHandler);
+container.bind<ErrorHandlerClass>(ErrorHandlerClass).to(ErrorHandlerClass);
 container.bind<UserService>(TYPES.UserService).to(UserService);
 container.bind<UserController>(TYPES.UserController).to(UserController)
 
