@@ -2,10 +2,11 @@ import { Container } from 'inversify';
 import { TYPES } from '../utils/type';
 import { UserService } from '../services';
 import { UserController } from '../controllers';
-import { ErrorHandlerClass } from '../handlers/errorResponse';
+import { ErrorHandler } from '../handlers/errorHandler';
+import { Auth } from '../middlewares/verifyLogin';
 
 const container = new Container()
-container.bind<ErrorHandlerClass>(ErrorHandlerClass).to(ErrorHandlerClass);
+container.bind<Auth>(Auth).toSelf();
 container.bind<UserService>(TYPES.UserService).to(UserService);
 container.bind<UserController>(TYPES.UserController).to(UserController)
 

@@ -1,2 +1,4 @@
 import { IUSER } from "./user.interface";
-export {IUSER}
+import {IUPDATEUSER} from "./updateUser.interface"
+import { IREQUEST } from "./request.interface";
+export {IUSER,IUPDATEUSER,IREQUEST}

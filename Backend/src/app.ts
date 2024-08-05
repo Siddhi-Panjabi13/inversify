@@ -1,12 +1,14 @@
+
 import 'reflect-metadata';
-import { ErrorHandlerClass } from './handlers/errorResponse';
 import express from "express";
 import connectDb from './config/db/connection';
 import cors from 'cors';
 import { port } from "./config/app.config";
-import {InversifyExpressServer} from 'inversify-express-utils';
+import { InversifyExpressServer } from 'inversify-express-utils';
 import container from './config/inversify.config'
-const server=new InversifyExpressServer(container)
+import { ErrorHandler } from './handlers/errorHandler';
+import { ErrorHandlerMiddleware } from './handlers/errorResponse';
+const server = new InversifyExpressServer(container)
 
 const allowedOrigins = ['http://localhost:4200']
 const corsOptions = {
@@ -19,17 +21,16 @@ const corsOptions = {
   }
 }
 server.setConfig(app => {
-    app.use(express.json())
-    app.use(cors(corsOptions))
-  })
-  server.setErrorConfig(app => {
-    const errorHandler = container.get<ErrorHandlerClass>(ErrorHandlerClass)
-    app.use(errorHandler.errorHandlerMiddleware.bind(errorHandler))
-  })
-const app=server.build()
+  app.use(express.json())
+  app.use(cors(corsOptions))
+})
+server.setErrorConfig(app => {
+  app.use(ErrorHandlerMiddleware)
+})
+const app = server.build()
 
 connectDb().then(() => {
-    app.listen((port.PORT),():void=>{
-        console.log('Server running on port', port.PORT)
-    })
+  app.listen((port.PORT), (): void => {
+    console.log('Server running on port', port.PORT)
+  })
 })
