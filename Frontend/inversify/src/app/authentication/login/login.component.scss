@@ -1,0 +1,15 @@
+.main-cont{
+  background: linear-gradient(90deg, hsla(260, 53%, 73%, 1) 0%, hsla(220, 37%, 74%, 1) 49%, hsla(170, 42%, 71%, 1) 100%);
+
+  min-height: 100vh;
+  .sub-cont1{
+    background-color: rgba(47, 79, 79, 0.247);
+    min-width: 14rem;
+    .title{
+      color: white;
+    }
+    .form-label{
+      color: white;
+    }
+  }
+  }

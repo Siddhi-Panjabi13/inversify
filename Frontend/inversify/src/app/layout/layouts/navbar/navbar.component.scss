@@ -1,0 +1,15 @@
+$back-ground:#4C4C6D;
+$text-color:white;
+.main-nav{
+  background-color: $back-ground;
+.welcome-text{
+  color: $text-color;
+  font-weight: bold;
+}
+.username{
+  color:$text-color
+}
+.dropdown-toggle::after {
+  font-size: x-large;
+}
+}

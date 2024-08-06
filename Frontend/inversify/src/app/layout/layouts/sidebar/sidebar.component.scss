@@ -1,0 +1,28 @@
+$bg-color: #5A5A89;
+$active-text: white;
+$active-bg: #215b5b90;
+.main-sidebar {
+  background-color: $bg-color;
+}
+.is-active {
+  background-color: $active-bg;
+  border-radius: 8px;
+  a,
+  span {
+    color: $active-text;
+  }
+}
+a,
+span {
+  color: rgba(255, 255, 255, 0.531);
+}
+a:hover,span:hover {
+  color: $active-text;
+}
+.router-hover:hover {
+  background-color: $active-bg;
+  border-radius: 8px;
+}
+.router-hover {
+  margin-bottom: 5px;
+}

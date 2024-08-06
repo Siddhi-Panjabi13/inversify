@@ -1,7 +1,6 @@
-import { IUPDATEUSER } from './../interfaces/updateUser.interface';
 import { UserService } from '../services';
 import { inject } from 'inversify';
-import { controller, httpGet, httpPatch, httpPost } from 'inversify-express-utils';
+import { controller, httpGet, httpPatch, httpPost,httpDelete } from 'inversify-express-utils';
 import { TYPES } from '../utils/type';
 import { NextFunction, Request, Response } from 'express';
 import { IREQUEST, IUSER } from '../interfaces';
@@ -33,8 +32,8 @@ export class UserController {
             return res.status(200).json(new ApiHandler('User created successfully', user));
 
         } catch (err) {
-            // ErrorHandlerMiddleware(err, req, res, next)
-            next(err)
+            ErrorHandlerMiddleware(err, req, res, next)
+            // next(err)
 
         }
     }
@@ -48,8 +47,20 @@ export class UserController {
             return res.status(200).json(new ApiHandler('Login successful',userLogged))
         }
         catch (err: any) {
-            // ErrorHandlerMiddleware(err, req, res, next)
+            ErrorHandlerMiddleware(err, req, res, next)
             // next(err);
+        }
+    }
+    @httpGet('/getLoggedInUser',Auth)
+    async getLoggedInUser(req:Request,res:Response,next:NextFunction){
+        try{
+            const user=(req as IREQUEST).user
+            if(!user){
+                throw new ErrorHandler(404,'User not found',false);
+            }
+            return user
+        }catch(err:any){
+            ErrorHandlerMiddleware(err,req,res,next);
         }
     }
     @httpPatch('/updateUser/:id',Auth)
@@ -64,6 +75,17 @@ export class UserController {
         }
         catch(err:any){
             ErrorHandlerMiddleware(err,req,res,next)
+        }
+    }
+    @httpDelete('/deleteUser/:id',Auth)
+    async deleteUser(req:Request,res:Response,next:NextFunction){
+        try{
+        const user=(req as IREQUEST).user;
+        const {id}:any=req.params;
+        const deleteUser=await this._userService.deleteUserService(id,user);
+        res.status(200).json(new ApiHandler('User deleted successfully'));
+        }catch(err:any){
+            ErrorHandlerMiddleware(err,req,res,next);
         }
     }
 }

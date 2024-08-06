@@ -1,0 +1,72 @@
+<div class="col-auto col-2   px-0  sticky-bottom h-100 position-fixed main-sidebar">
+  <div class="d-flex flex-column align-items-center align-items-sm-start  pt-2  min-vh-100  px-2">
+      <a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto  text-decoration-none px-2">
+          <span class="fs-5 d-none d-sm-inline">Menu</span>
+      </a>
+      <div class="container-fluid p-0">
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100"
+              id="menu">
+              <div routerLinkActive='is-active' class="container-fluid router-hover">
+                  <li class="nav-item">
+                      <a [routerLink]="['/layouts/admin/home']"
+                          class="nav-link align-middle px-0 text-decoration-none">
+                          <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                      </a>
+                  </li>
+              </div>
+              <div class="container-fluid">
+                  <li>
+                      <a href="#submenu1" data-bs-toggle="collapse"
+                          class="nav-link px-0 align-middle  text-decoration-none router-hover">
+                          <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
+
+                      <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                          <div class="container-fluid  router-hover" routerLinkActive="is-active">
+                              <li>
+                                  <a [routerLink]="['/layouts/admin/viewUsers']" class="nav-link px-0 ">
+                                      <span class="d-none d-sm-inline">View Users</span> </a>
+                              </li>
+                          </div>
+                          <div class="container-fluid  router-hover" routerLinkActive="is-active">
+                              <li>
+                                  <a [routerLink]="['/auth/signup']" class="nav-link px-0 "> <span
+                                          class="d-none d-sm-inline">Add Users
+                                      </span>
+                                  </a>
+                              </li>
+                          </div>
+                      </ul>
+
+                  </li>
+              </div>
+
+              <div class="container-fluid">
+                  <li>
+                      <a href="#submenu2" data-bs-toggle="collapse"
+                          class="nav-link px-0 align-middle  text-decoration-none router-hover">
+                          <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Questions</span>
+                      </a>
+                      <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                          <div class="container-fluid  router-hover" routerLinkActive="is-active">
+                              <li>
+                                  <a [routerLink]="['/layouts/category/viewCategory']" class="nav-link px-0 "
+                                      [routerLink]="['/layouts/admin/viewQuestions']"> <span
+                                          class="d-none d-sm-inline">View Questions</span> </a>
+                              </li>
+                          </div>
+                          <div class="container-fluid router-hover" routerLinkActive="is-active">
+                              <li>
+                                  <a class="nav-link px-0" [routerLink]="['/layouts/admin/addQuestion']">
+                                      <span class="d-none d-sm-inline">Add Questions
+                                      </span> </a>
+                              </li>
+                          </div>
+                      </ul>
+                  </li>
+              </div>
+          </ul>
+      </div>
+      <hr>
+
+  </div>
+</div>

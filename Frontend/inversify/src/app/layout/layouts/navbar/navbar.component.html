@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg  sticky-top me-0 ms-auto flex-grow-1 main-nav col-10">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0  mx-auto fs-4">
+        <li class="nav-item">
+          <a class="nav-link active welcome-text" aria-current="page">Welcome, {{user?.userName}}</a>
+        </li>
+
+      </ul>
+
+      <button data-bs-toggle="dropdown" aria-expanded="false" class="border-0 bg-transparent">
+        <div class="d-flex flex-row gap-1 justify-content-center align-items-center">
+          <img src="../../../../assets/default.png" class="img-fluid" style="border-radius: 50%; width: 3rem; height: 3rem;" alt="No img"
+            width="40px" height="5px">
+          <p class="mt-2 fs-5 fw-bold mt-3 username">{{user?.userName}}</p>
+
+          <div class="dropdown">
+            <ul class="dropdown-menu dropdown-menu-sm-end text-small shadow">
+              <li><a class="dropdown-item" routerLinkActive="router-link-active" (click)="getProfile()">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item">Signout</a></li>
+            </ul>
+          </div>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</nav>
