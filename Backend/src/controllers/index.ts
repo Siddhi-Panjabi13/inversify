@@ -1,2 +1,3 @@
 import { UserController } from "./user.controller";
-export {UserController}
+import {StationController} from "./station.controller"
+export {UserController,StationController}

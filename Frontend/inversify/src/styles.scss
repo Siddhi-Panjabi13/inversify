@@ -4,3 +4,18 @@
 @import 'bootstrap/scss/bootstrap';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'ngx-toastr/toastr';
+
+$light:#F6F1F1;
+$lightBlue:#AFD3E2;
+$skyBlue:#19A7CE;
+$skyNav:rgb(216, 214, 214);
+$darkBlue:#146C94;
+
+.bgSide{
+    background-color: $darkBlue;
+    color:$light;
+}
+.bgNav{
+    background-color: $skyNav;
+    color:$skyBlue;
+}

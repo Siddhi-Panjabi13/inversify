@@ -8,6 +8,7 @@ import { ApiHandler } from '../handlers/apiHandler';
 import { ErrorHandler } from '../handlers/errorHandler';
 import { ErrorHandlerMiddleware } from '../handlers/errorResponse';
 import { Auth } from '../middlewares/verifyLogin';
+import { VerifyRole } from '../middlewares/verifyRole';
 @controller('/api/users')
 export class UserController {
     constructor(@inject(TYPES.UserService) private readonly _userService: UserService) { }
