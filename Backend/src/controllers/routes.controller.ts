@@ -6,7 +6,9 @@ import { controller,httpPost,httpGet,httpPatch,httpDelete } from "inversify-expr
 import { TYPES } from "../utils/type";
 import {ApiHandler} from "../handlers/apiHandler"
 import {ErrorHandlerMiddleware} from "../handlers/errorResponse"
-@controller('/api/routes')
+import {Auth} from "../middlewares/verifyLogin";
+import {VerifyRole} from "../middlewares/verifyRole"
+@controller('/api/routes',Auth,VerifyRole.role(['Admin']))
 export class RouteController{
     constructor(@inject(TYPES.RoutesService) private readonly _routeService:RoutesService){}
     @httpPost('/createRoute')
@@ -32,4 +34,26 @@ export class RouteController{
             ErrorHandlerMiddleware(err,req,res,next);
         }
     }
+@httpPatch('/updateRoutes')
+async updateRoute(req:Request,res:Response,next:NextFunction){
+    try{
+        const {id}:any=req.params;
+        const {routeName,stations}=req.body
+        const routeData={routeName,stations}
+        const updatedRoute=await this._routeService.updateRoutesService(id,routeData);
+        res.status(200).json(new ApiHandler('Route updated successfully',updatedRoute))
+    }catch(err){
+        ErrorHandlerMiddleware(err,req,res,next)
+    }
+}
+@httpDelete('/deleteRoutes')
+async deleteRoute(req:Request,res:Response,next:NextFunction){
+    try{
+        const {id}:any=req.params;
+        const deletedRoute=await this._routeService.deleteRoutesService(id);
+        res.status(200).json(new ApiHandler('Route deleted successfully'));
+    }catch(err){
+        ErrorHandlerMiddleware(err,req,res,next)
+    }
+}
 }

@@ -30,4 +30,7 @@ export class UserService {
   getLoggedInUser(){
     return this.httpClient.get('users/getLoggedInUser')
   }
+  logoutUser(){
+     localStorage.clear();
+  }
 }

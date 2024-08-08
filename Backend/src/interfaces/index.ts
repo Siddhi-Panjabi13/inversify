@@ -4,4 +4,5 @@ import { IREQUEST } from "./request.interface";
 import { ISTATION } from "./station.interface";
 import {IROUTE} from "./routes.interface"
 import { IROUTESTATION } from "./routes.interface";
-export {IUSER,IUPDATEUSER,IREQUEST,ISTATION,IROUTE,IROUTESTATION};
+import { IUPDATEROUTE } from "./updateRoute.interface";
+export {IUSER,IUPDATEUSER,IREQUEST,ISTATION,IROUTE,IROUTESTATION,IUPDATEROUTE};

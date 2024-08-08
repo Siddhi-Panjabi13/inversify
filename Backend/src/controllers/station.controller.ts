@@ -56,4 +56,14 @@ export class StationController{
             ErrorHandlerMiddleware(err,req,res,next);
         }
     }
+    @httpGet('/getStationById/:id')
+    async  getStationById(req:Request,res:Response,next:NextFunction){
+        try{
+            const {id}:any=req.params;
+            const station=await this._stationService.getStationByIdService(id);
+            res.status(200).json(new ApiHandler('Station found', station));
+        }catch(err){
+            ErrorHandlerMiddleware(err,req,res,next);
+        }
+    }
 }

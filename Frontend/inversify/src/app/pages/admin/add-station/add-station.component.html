@@ -1,0 +1,22 @@
+<div class="container-fluid mt-4">
+  <div class="col-md-10 col-12 me-0 ms-auto">
+    <div class="mb-3 p-4 w-100 d-flex justify-content-center">
+      <form class="w-50 border border-1 rounded p-3 shadow" [formGroup]="addStation" (ngSubmit)="add()">
+        <h3 class="mb-3 text-center textColor">Add Station</h3>
+        <div class="form-group">
+          <label for="stationName" class="form-label textColor fw-medium">Station Name</label>
+          <input type="text" name="stationName" class="form-control" placeholder="Enter station name"
+       aria-describedby="helpId" formControlName="stationName"
+       [ngClass]="{'is-invalid': data['stationName'].invalid &&(data['stationName'].touched||data['stationName'].dirty)}"/>
+          <div *ngIf="data['stationName'].invalid &&(data['stationName'].touched||data['stationName'].dirty)"
+            class="alert-danger text-danger alert">
+            <div *ngIf="data['stationName'].errors?.['required']">
+              Station Name is a mandatory field.
+            </div>
+          </div>
+        </div>
+        <button class="d-block mx-auto mt-3 btn bgSide btn-md" *ngIf="isSubmit">Add</button>
+        <button class="d-block mx-auto mt-3 btn bgSide btn-md" *ngIf="isUpdate">Save</button>
+      </form>
+    </div>
+  </div>

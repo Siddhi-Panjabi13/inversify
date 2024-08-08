@@ -32,5 +32,12 @@ async deleteStationService(id:mongoose.Types.ObjectId){
     }
     return deleteStation
 }
+async getStationByIdService(id:mongoose.Types.ObjectId){
+    const station=await Station.findById(id);
+    if(!station){
+        throw new ErrorHandler(404,'Station not found',false);
+    }
+    return station
+}
 
 }

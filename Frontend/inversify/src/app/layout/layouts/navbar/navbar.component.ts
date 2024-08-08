@@ -24,4 +24,8 @@ getLoggedInUser(){
 getProfile(){
   this.router.navigate(['/layouts/getProfile'])
 }
+signOut(){
+  this.userService.logoutUser();
+  this.router.navigate(['/auth/login'])
+}
 }

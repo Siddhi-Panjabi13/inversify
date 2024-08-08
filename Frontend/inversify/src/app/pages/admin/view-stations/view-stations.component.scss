@@ -1,0 +1,6 @@
+.stationCard{
+  transition: transform 0.3s ease-in-out;
+}
+.stationCard:hover{
+  transform: scale(1.06);
+}

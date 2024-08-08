@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="col-10 me-0 ms-auto">
+    <div class="container-fluid row mt-2 d-flex gap-3 justify-content-center">
+    <div *ngFor="let station of stations" class="col-sm-4 col-md-3 border border-1 rounded mt-3 d-flex py-3 justify-content-between stationCard flex-column flex-lg-row">
+      <h4 class="textColor">{{station.stationName}}</h4>
+      <div class="btn-cont d-flex align-items-center gap-2">
+        <i class="fa fa-pencil-square-o fs-3 text-warning" aria-hidden="true" (click)="editStation(station._id)"></i>
+        <i class="fa fa-trash-o fs-3 text-danger" aria-hidden="true" (click)="deleteStation(station._id)"></i>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
